@@ -1,0 +1,25 @@
+<script>
+  const hl = document.querySelectorAll('.remark-code-line-highlighted')
+
+  const pres = []
+
+  for (let line of hl) {
+    let pre = line.parentElement.parentElement
+    if (!pres.includes(pre)) {
+      pres.push(pre)
+    }
+  }
+
+  // Adds .remark-code-has-line-highlighted to <pre> parent of any highlighted line
+  pres.forEach(p => p.classList += " remark-code-has-line-highlighted")
+</script>
+<style>
+  .remark-code-has-line-highlighted .remark-code-line:not(.remark-code-line-highlighted) {
+    opacity: 0.4;
+  }
+
+  .remark-code-line-highlighted {
+    background-color: inherit; /* Override highlight color */
+    font-weight: 600;
+  }
+</style>
