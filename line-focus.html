@@ -1,17 +1,23 @@
 <script>
-  const hl = document.querySelectorAll('.remark-code-line-highlighted')
+  (function(d) {
+    const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+    const preParents = [];
+    const findPreParent = function(line, p = 0) {
+      if (p > 1) return null; // traverse up no further than grandparent
+      const el = line.parentElement;
+      if (el.tagName === "PRE") {
+        return el;
+      } else {
+        return findPreParent(el, ++p);
+      }
+    };
 
-  const pres = []
-
-  for (let line of hl) {
-    let pre = line.parentElement.parentElement
-    if (!pres.includes(pre)) {
-      pres.push(pre)
+    for (let line of hlines) {
+      let pre = findPreParent(line);
+      if (pre && !preParents.includes(pre)) preParents.push(pre);
     }
-  }
-
-  // Adds .remark-code-has-line-highlighted to <pre> parent of any highlighted line
-  pres.forEach(p => p.classList += " remark-code-has-line-highlighted")
+    preParents.forEach(p => p.classList += " remark-code-has-line-highlighted");
+  })(document);
 </script>
 <style>
   .remark-code-has-line-highlighted .remark-code-line:not(.remark-code-line-highlighted) {

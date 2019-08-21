@@ -24,6 +24,13 @@ library(dplyr)
 data(diamonds, package = "ggplot2")
 ```
 
+```{css echo=FALSE}
+pre {
+  max-height: 80%;
+  overflow-y: auto;
+}
+```
+
 ---
 
 ```{r, eval=FALSE}
@@ -31,7 +38,7 @@ diamonds %>%
   arrange(price) %>% 
   filter(price > 300) %>% 
   mutate(log_price = log(price)) %>% 
-  select(carat, cut, color, clarity, log_price)
+  select(carat, cut, color, clarity, price, log_price)
 ```
 
 ---
@@ -101,3 +108,9 @@ class: center middle
 <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="25%" />
 
 ### [gadenbuie/xaringan-line-focus](https://github.com/gadenbuie/xaringan-line-focus)
+
+---
+
+```{r}
+sessioninfo::session_info()
+```
